@@ -1330,6 +1330,36 @@
     .mw2-benefits li { font-size: 12px; }
   }
 </style>
+
+<!-- UTMIFY PIXEL -->
+<script>
+  window.pixelId = "6a7b14fa19b4751e642eea65";
+  var utmifyPixelScript = document.createElement("script");
+  utmifyPixelScript.setAttribute("async", "");
+  utmifyPixelScript.setAttribute("defer", "");
+  utmifyPixelScript.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(utmifyPixelScript);
+</script>
+<!-- FIM UTMIFY PIXEL -->
+
+<!-- Start NB Pixel Snippet -->
+<script>
+!(function (e, n, t, i, p, a, s) {
+  e[i] ||
+    (((p = e[i] =
+      function () {
+        p.process ? p.process.apply(p, arguments) : p.queue.push(arguments);
+      }).queue = []),
+    (p.t = +new Date()),
+    ((a = n.createElement(t)).async = 1),
+    (a.src = 'https://static.newsbreak.com/business/tracking/nbpixel.js?t=' + 864e5 * Math.ceil(new Date() / 864e5)),
+    (s = n.getElementsByTagName(t)[0]).parentNode.insertBefore(a, s));
+})(window, document, 'script', 'nbpix'),
+  nbpix('init', 'ID-2095971717105889282'),
+  nbpix('event', 'pageload');
+</script>
+<!-- End NB Pixel Snippet -->
+
 </head>
 
 <body>
@@ -1773,7 +1803,8 @@
 
   <!--
     CLEANUP/AUDIT:
-    - No UTMfy pixel added yet.
+    - UTMfy pixel added: 6a7b14fa19b4751e642eea65.
+    - NewsBreak base pixel added: ID-2095971717105889282.
     - No legacy js/track.js is referenced.
     - BuyGoods tracking is configured for account 12591 / affiliate 6922 / min2n,min3b,min6b.
     - Conversion iframe remains disabled until the official MindWake conversion token is confirmed.
