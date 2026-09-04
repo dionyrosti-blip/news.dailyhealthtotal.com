@@ -1,0 +1,1409 @@
+<!DOCTYPE html><html lang="en"><head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>MindWake</title>
+
+  <!-- Ícones / Fontes -->
+  <link rel="stylesheet" href="css/fontawesome.min.css">
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <!-- jQuery (usado pelos scripts de delay) -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════
+       MINDWAKE - MODELO PADRÃO
+       Layout: editorial dark (CBS News style)
+       Tema: preto + branco + roxo (acento) + laranja BEST VALUE
+       ══════════════════════════════════════════════════════════════════════════════ -->
+  <style>
+    /* ╔════════════════════════════════════════════════════════════════════════════╗
+       ║                                                                            ║
+       ║   📌 GUIA DE EDIÇÃO RÁPIDA                                                 ║
+       ║                                                                            ║
+       ║   🎨 CORES: Altere as variáveis abaixo (:root)                             ║
+       ║   🖼️  MOCKUPS: Procure por "MOCKUP" no HTML (Ctrl+F)                       ║
+       ║   💰 PREÇOS: Procure por "PREÇO" no HTML (Ctrl+F)                          ║
+       ║   ✏️  TEXTOS: Procure por "TEXTO" no HTML (Ctrl+F)                         ║
+       ║   🛒 CHECKOUT: Procure por "CHECKOUT" no HTML (Ctrl+F)                     ║
+       ║                                                                            ║
+       ╚════════════════════════════════════════════════════════════════════════════╝ */
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       🎨 PALETA DE CORES - TEMA MINDWAKE DARK
+       ══════════════════════════════════════════════════════════════════════════════ */
+    :root {
+      /* Fundos */
+      --bg-page: #000000;
+      --bg-surface: #111111;
+      --bg-surface-2: #1a1a1a;
+      --bg-card-side: #161616;
+      --bg-card-side-grad: #0e0e0e;
+
+      /* Texto */
+      --text-primary: #ffffff;
+      --text-secondary: #b8b8b8;
+      --text-muted: #7a7a7a;
+      --text-disabled: #4d4d4d;
+
+      /* Bordas / divisores */
+      --border-soft: #232323;
+      --border-strong: #2e2e2e;
+
+      /* Acentos de marca (roxo) */
+      --brand-purple: #7b3aa8;
+      --brand-purple-light: #9d5fc9;
+      --brand-purple-deep: #4f1f72;
+
+      /* Vermelho editorial (LIVE, headline border) */
+      --accent-red: #d9001b;
+      --accent-red-dark: #a30015;
+
+      /* BEST VALUE - Laranja (contraste mantido conforme solicitado) */
+      --best-orange-1: #E6882B;
+      --best-orange-2: #D07520;
+      --best-orange-deep: #B85F15;
+
+      /* Preços */
+      --price-old: #ff5a6a;
+      --price-now-light: #ffde59;
+      --price-now-best: #ffffff;
+
+      /* Checks */
+      --check-purple: var(--brand-purple-light);
+      --check-orange: var(--best-orange-1);
+      --check-white: #ffffff;
+      --check-green: #21c97a;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       ⚙️ RESET & BASE
+       ══════════════════════════════════════════════════════════════════════════════ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg-page); color: var(--text-primary); }
+    body {
+      font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .mg-auto { margin-left: auto; margin-right: auto; }
+    .esconder { display: none; }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       📰 HEADER - estilo editorial CBS News (preto, minimalista)
+       ══════════════════════════════════════════════════════════════════════════════ */
+    .news-header {
+      background: #000;
+      border-bottom: 1px solid var(--border-soft);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .news-header .icon-btn {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 3px;
+      cursor: default;
+    }
+    .news-header .icon-btn span {
+      background: #ffffff;
+      border-radius: 1px;
+    }
+    .news-header .brand {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      color: #fff;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .news-header .brand .brand-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .news-header .brand .brand-dot::before {
+      content: '';
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #000;
+    }
+    .news-header .search-btn {
+      color: #fff;
+      font-size: 18px;
+      cursor: default;
+      opacity: 0.95;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       📄 CONTAINER PRINCIPAL
+       ══════════════════════════════════════════════════════════════════════════════ */
+    #container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--bg-page);
+      min-height: 100vh;
+    }
+
+    .principal {
+      padding: 28px 22px 36px;
+    }
+
+    /* VTURB / Vídeo */
+    .video_vturb {
+      width: 100%;
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    /* TEXTO: HEADLINE PRINCIPAL */
+    .headline-block {
+      margin-bottom: 26px;
+    }
+    .headline-block h1 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 500;
+      font-size: clamp(22px, 5vw, 34px);
+      line-height: 1.22;
+      color: var(--text-primary);
+      letter-spacing: -0.4px;
+      text-align: left;
+      max-width: 38ch;
+      text-wrap: balance;
+    }
+    .headline-block h1 strong {
+      font-weight: 800;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+    .headline-block h1 .h-accent {
+      color: var(--accent-red);
+    }
+    .headline-block .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-red);
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      padding: 6px 12px 6px 10px;
+      margin-top: 16px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .headline-block .live-badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulseDot 1.4s infinite ease-in-out;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       💊 SEÇÃO DE OFERTAS (3 CARDS)
+       ══════════════════════════════════════════════════════════════════════════════ */
+    .ofertas-section {
+      padding: 40px 18px 24px;
+    }
+    .ofertas-section .scrolldown-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      text-align: center;
+      color: #fff;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .ofertas-section .scrolldown-sub {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .ofertas-container {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: linear-gradient(180deg, var(--bg-card-side) 0%, var(--bg-card-side-grad) 100%);
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 22px 20px 24px;
+      position: relative;
+      text-align: center;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--brand-purple);
+    }
+
+    .card__kicker {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--brand-purple-light);
+      margin-bottom: 14px;
+    }
+
+    .pote-mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .pote-mobile .h3 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .pote-mobile .h3--xl { font-size: 36px; }
+    .pote-mobile .sub {
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-top: 4px;
+      margin-bottom: 14px;
+    }
+    .pote-mobile .sub-main {
+      font-size: 14px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-top: 4px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .pote-mobile .pote {
+      max-width: 220px;
+      width: 100%;
+      margin: 6px auto 16px;
+      filter: drop-shadow(0 12px 24px rgba(123, 58, 168, 0.35));
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .price-row .was {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+    .price-row .was s {
+      text-decoration-color: var(--accent-red);
+      text-decoration-thickness: 2px;
+    }
+    .price-row .now {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .price-row .now--yellow { color: var(--price-now-light); }
+    .price-row .now--laranja { color: var(--best-orange-1); }
+
+    .ship {
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .ship strong { color: #fff; }
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .bullets li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bullets li i {
+      color: var(--check-purple);
+      font-size: 16px;
+    }
+    .bullets li i.check--white { color: #fff; }
+    .bullets li i.check--laranja { color: var(--best-orange-1); }
+    .bullets li.highlight-yellow { color: var(--price-now-light); font-weight: 600; }
+    .bullets li.highlight-orange { color: var(--best-orange-1); font-weight: 600; }
+
+    /* Botão buy */
+    .btn.buylink {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      margin: 6px auto 14px;
+      padding: 16px 18px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(180deg, var(--brand-purple-light) 0%, var(--brand-purple) 60%, var(--brand-purple-deep) 100%);
+      border: 0;
+      border-radius: 10px;
+      box-shadow: 0 8px 22px rgba(123, 58, 168, 0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+      cursor: pointer;
+      text-align: center;
+      transition: transform .12s ease, box-shadow .2s ease;
+      animation: pulseBtn 2.2s infinite ease-in-out;
+    }
+    .btn.buylink:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(123, 58, 168, 0.5), inset 0 1px 0 rgba(255,255,255,0.22);
+    }
+    .btn.buylink:active { transform: translateY(0); }
+
+    .btn.btn--laranja.buylink {
+      background: linear-gradient(180deg, #ffae5c 0%, var(--best-orange-1) 55%, var(--best-orange-deep) 100%);
+      box-shadow: 0 8px 22px rgba(230, 136, 43, 0.45), inset 0 1px 0 rgba(255,255,255,0.22);
+    }
+    .btn.btn--laranja.buylink:hover {
+      box-shadow: 0 10px 28px rgba(230, 136, 43, 0.6), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+
+    @keyframes pulseBtn {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.02); }
+    }
+
+    .cards-pay {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      opacity: 0.85;
+    }
+    .cards-pay img {
+      max-width: 220px;
+      filter: grayscale(0.15) brightness(0.95);
+    }
+
+    .total {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+    }
+    .total strong { color: #fff; font-size: 16px; }
+    .total s { color: var(--text-disabled); text-decoration-color: var(--accent-red); }
+    .total small { font-size: 12px; letter-spacing: 1px; }
+    .total .texto-vermelho { color: var(--accent-red); font-weight: 700; }
+
+    /* === CARD CENTRAL (BEST VALUE) === */
+    .card.card--best {
+      background:
+        radial-gradient(ellipse at top, rgba(230, 136, 43, 0.18) 0%, transparent 60%),
+        linear-gradient(180deg, #1c1107 0%, #0e0805 100%);
+      border: 1.5px solid var(--best-orange-1);
+      box-shadow: 0 12px 36px rgba(230, 136, 43, 0.18);
+      padding-top: 38px;
+      order: -1; /* aparece primeiro no mobile-first */
+    }
+
+    .card__kickermain {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, var(--best-orange-1) 0%, var(--best-orange-deep) 100%);
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 100px;
+      box-shadow: 0 6px 14px rgba(230,136,43,0.45);
+      white-space: nowrap;
+    }
+
+    .card--best .card__inner { display: contents; }
+    .card--best .pote-mobile .pote {
+      filter: drop-shadow(0 16px 30px rgba(230, 136, 43, 0.45));
+      max-width: 260px;
+    }
+
+    .surprise-bounce {
+      animation: bounceText 1.6s infinite ease-in-out;
+    }
+    @keyframes bounceText {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-3px); }
+    }
+
+    .texto-garantia-central {
+      color: #fff;
+      letter-spacing: 1.4px;
+      margin-top: 4px;
+    }
+    .texto-surprise {
+      color: var(--best-orange-1);
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      margin-top: 2px;
+      margin-bottom: 12px;
+    }
+    .texto-footer-central {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .texto-footer-central strong { color: var(--best-orange-1); }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       🛡️ GARANTIA
+       ══════════════════════════════════════════════════════════════════════════════ */
+    .guarantee-section {
+      padding: 40px 22px;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      margin-top: 28px;
+    }
+    .guarantee-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.25;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .guarantee-title .red-highlight {
+      color: var(--accent-red);
+      display: block;
+      margin-top: 6px;
+    }
+    .guarantee-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+    .guarantee-badge {
+      width: 160px;
+      filter: drop-shadow(0 8px 18px rgba(217, 0, 27, 0.35));
+    }
+    .guarantee-text p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       💬 COMENTÁRIOS FB (tema escuro)
+       ══════════════════════════════════════════════════════════════════════════════ */
+    #fb-comments {
+      font-family: 'Segoe UI Historic', 'Segoe UI', Helvetica, Arial, sans-serif;
+      width: 100%;
+      max-width: 700px;
+      margin: 28px auto;
+      padding: 0 18px;
+    }
+    #fb-comments .fb-heading {
+      font-size: 18px;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+    #fb-comments .fb-heading b { color: #fff; font-weight: 700; }
+    #fb-comments .comments-container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 18px 18px 6px;
+      background: var(--bg-surface);
+    }
+    #fb-comments .comment {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      position: relative;
+      width: 100%;
+    }
+    #fb-comments .comment.answer {
+      margin-left: 50px;
+      max-width: calc(100% - 50px);
+    }
+    #fb-comments .comment .user-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    #fb-comments .comment-data { width: 100%; }
+    #fb-comments .comment-data .user {
+      background: var(--bg-surface-2);
+      border-radius: 14px;
+      padding: 8px 14px 12px;
+    }
+    #fb-comments .comment-data .user .name {
+      margin: 0;
+      color: #b5cdf7;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    #fb-comments .comment-data .user .text {
+      margin: 2px 0 0;
+      font-size: 14px;
+      color: #e7e7e7;
+      text-align: left;
+      line-height: 1.45;
+    }
+    #fb-comments .comment-data .buttons {
+      margin: 4px 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #fb-comments .comment-data .buttons like,
+    #fb-comments .comment-data .buttons answer,
+    #fb-comments .comment-data .buttons time,
+    #fb-comments .comment-data .buttons span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    #fb-comments .comment-data .buttons like,
+    #fb-comments .comment-data .buttons answer { font-weight: 600; }
+    #fb-comments .comment likes {
+      position: absolute;
+      bottom: -6px;
+      right: 0;
+      background: var(--bg-surface-2);
+      border: 1px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-radius: 100px;
+      padding: 2px 8px;
+    }
+    #fb-comments .comment likes::before {
+      content: '👍';
+      margin-right: 4px;
+      font-size: 12px;
+    }
+    #fb-comments .comments-closed {
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      margin: 14px 0 12px;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════════════════════════ */
+    /* FOOTER MINDWAKE */
+    .mindwake-footer {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      margin-left: -50vw;
+      background: #000000;
+      color: #ffffff;
+      text-align: center;
+      border-top: 1px solid #242424;
+      font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .mindwake-footer__inner {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 44px 0 0;
+    }
+    .mindwake-footer__links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      padding: 0 12px 34px;
+    }
+    .mindwake-footer__links a {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration: none;
+      transition: opacity .2s ease;
+    }
+    .mindwake-footer__links a:hover { opacity: .72; }
+    .mindwake-footer__disclaimer {
+      border: 1px solid #383838;
+      padding: 30px 34px;
+      color: #e5e5e5;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.55;
+      text-align: center;
+      background: #000000;
+    }
+    .mindwake-footer__copyright {
+      padding: 30px 20px 34px;
+      color: #d2d2d2;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.55;
+      background: #000000;
+    }
+    @media (max-width: 600px) {
+      .mindwake-footer__inner {
+        width: min(100% - 24px, 1180px);
+        padding-top: 34px;
+      }
+      .mindwake-footer__links {
+        gap: 12px 18px;
+        padding-bottom: 26px;
+      }
+      .mindwake-footer__links a { font-size: 13px; }
+      .mindwake-footer__disclaimer {
+        padding: 22px 16px;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+      .mindwake-footer__copyright {
+        padding: 24px 14px 30px;
+        font-size: 12px;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       📱 RESPONSIVO
+       ══════════════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .news-header { padding: 14px 16px; }
+      .news-header .brand { font-size: 16px; }
+      .principal { padding: 22px 16px 30px; }
+      .ofertas-section { padding: 32px 12px 18px; }
+      .card { padding: 22px 16px 20px; }
+      .pote-mobile .h3 { font-size: 24px; }
+      .pote-mobile .h3--xl { font-size: 30px; }
+      .price-row .now { font-size: 36px; }
+      .guarantee-title { font-size: 19px; }
+      #fb-comments { padding: 0 12px; }
+      #fb-comments .comment.answer { margin-left: 32px; max-width: calc(100% - 32px); }
+    }
+
+    @media (min-width: 900px) {
+      /* Ofertas escapam da largura do container e centralizam na viewport */
+      .ofertas-section {
+        width: calc(100vw - 40px);
+        max-width: 1080px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .ofertas-container {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: nowrap;
+      }
+      .card {
+        max-width: 340px;
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .card .pote-mobile { flex: 1 0 auto; }
+      .card.card--best { order: 0; transform: scale(1.03); z-index: 2; }
+    }
+  
+
+    /* ══════════════════════════════════════════════════════════════════════════════
+       MINDWAKE — OFFER CARDS (imported/adapted from the supplied MindWake page)
+       ══════════════════════════════════════════════════════════════════════════════ */
+    .mw-offers {
+      padding: 40px 0 28px;
+      position: relative;
+    }
+    .mw-offers-head {
+      padding: 0 18px 26px;
+      text-align: center;
+    }
+    .mw-offers-title {
+      font-family: 'Manrope', 'Sora', Arial, sans-serif;
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: .2px;
+      margin: 0 0 8px;
+    }
+    .mw-offers-sub {
+      color: #b8b8b8;
+      font-size: 14px;
+      margin: 0;
+    }
+    .mw-offers-stage {
+      width: calc(100vw - 28px);
+      max-width: 1100px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 28px 18px 30px;
+      border-radius: 8px;
+      overflow: visible;
+    }
+    .mw-offers-grid {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+    .mw-offer-card {
+      background: #fff;
+      border: 1px solid #8c939d;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      box-shadow: 0 2px 8px rgba(2,25,86,.08);
+      color: #021956;
+    }
+    .mw-offer-card--popular {
+      background: #ffefd8;
+      border: 2px solid #c99a3a;
+      box-shadow: 0 8px 24px rgba(164,130,61,.22);
+      transform: translateY(-4px);
+    }
+    .mw-offer-card__header {
+      background: #021956;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'Manrope', Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1;
+      letter-spacing: .4px;
+      padding: 12px 8px;
+    }
+    .mw-offer-card--popular .mw-offer-card__header {
+      background: linear-gradient(90deg,#a4823d 0%,#ffd580 24%,#ffd580 72%,#a4823d 100%);
+      color: #021956;
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .mw-offer-card__body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 12px 16px 18px;
+      text-align: center;
+    }
+    .mw-offer-card__qty {
+      font-family: 'Manrope', Arial, sans-serif;
+      font-size: 28px;
+      line-height: 1.08;
+      font-weight: 800;
+      color: #021956;
+      margin-top: 2px;
+    }
+    .mw-offer-card__supply {
+      font-size: 12px;
+      color: #71818d;
+      margin: 5px 0 10px;
+    }
+    .mw-offer-card__image-wrap {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto 4px;
+      width: 100%;
+    }
+    .mw-offer-card__image {
+      width: 100%;
+      max-width: 230px;
+      max-height: 176px;
+      object-fit: contain;
+    }
+    .mw-offer-card--popular .mw-offer-card__image {
+      max-width: 245px;
+    }
+    .mw-save-badge {
+      position: absolute;
+      right: 3px;
+      bottom: 20px;
+      width: 58px;
+      height: 58px;
+      background: #c1121f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      clip-path: polygon(50% 0%,61% 8%,74% 4%,82% 17%,96% 19%,95% 34%,100% 46%,91% 57%,94% 71%,80% 77%,75% 91%,61% 89%,50% 100%,39% 90%,25% 94%,19% 79%,5% 74%,9% 59%,0% 48%,8% 36%,4% 21%,19% 17%,25% 4%,39% 9%);
+      font-family: Arial, sans-serif;
+      font-size: 8px;
+      line-height: 1.05;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .mw-save-badge strong {
+      font-size: 10px;
+      display: block;
+      color: #fff;
+    }
+    .mw-offer-card__price {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 3px;
+      margin: 5px 0 10px;
+    }
+    .mw-offer-card__price strong {
+      font-family: 'Manrope', Arial, sans-serif;
+      font-size: 42px;
+      line-height: .9;
+      font-weight: 800;
+      color: #021956;
+      letter-spacing: -1.5px;
+    }
+    .mw-offer-card__price span {
+      color: #71818d;
+      font-size: 12px;
+      padding-bottom: 3px;
+    }
+    .mw-perks {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 14px;
+      width: 100%;
+      max-width: 245px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .mw-perks li {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+      color: #71818d;
+      font-size: 11px;
+      line-height: 1.25;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .mw-perks .mw-mark {
+      width: 15px;
+      height: 15px;
+      min-width: 15px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .mw-perks .mw-mark--yes { background: #16b957; }
+    .mw-perks .mw-mark--no { background: #f04343; }
+    .mw-offer-card__cta {
+      margin-top: auto;
+      display: block;
+      text-align: center;
+    }
+    .mw-offer-card__cta img {
+      display: block;
+      width: 100%;
+      max-width: 245px;
+      margin: 0 auto;
+      height: auto;
+    }
+    .mw-offer-card__cta:hover img {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+    .mw-offer-card__cards {
+      display: block;
+      width: 106px;
+      max-width: 52%;
+      margin: 5px auto 8px;
+      height: auto;
+    }
+    .mw-offer-card__total {
+      color: #8a9198;
+      font-size: 11px;
+      line-height: 1.2;
+      margin-top: 0;
+    }
+    .mw-offer-card__total s {
+      color: #747a80;
+      text-decoration-color: #c1121f;
+    }
+    .mw-offer-card__total strong {
+      color: #021956;
+      font-size: 12px;
+      margin-left: 3px;
+    }
+    .mw-preview-note {
+      width: calc(100vw - 28px);
+      max-width: 1100px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #8a8a8a;
+      text-align: center;
+      font-size: 11px;
+      padding: 8px 10px 0;
+    }
+
+    @media (max-width: 900px) {
+      .mw-offers-stage {
+        width: calc(100vw - 20px);
+        padding: 22px 12px 24px;
+      }
+      .mw-offers-grid {
+        grid-template-columns: 1fr;
+        max-width: 390px;
+        gap: 20px;
+      }
+      .mw-offer-card--popular {
+        transform: none;
+      }
+      .mw-offer-card__qty { font-size: 30px; }
+      .mw-offer-card__supply { font-size: 13px; }
+      .mw-offer-card__image-wrap { height: 210px; }
+      .mw-offer-card__image { max-width: 275px; max-height: 205px; }
+      .mw-offer-card--popular .mw-offer-card__image { max-width: 290px; }
+      .mw-offer-card__price strong { font-size: 46px; }
+      .mw-perks { max-width: 275px; }
+      .mw-perks li { font-size: 12px; }
+      .mw-offer-card__cta img { max-width: 270px; }
+      .mw-save-badge { right: 7%; bottom: 25px; width: 64px; height: 64px; }
+    }
+
+</style>
+
+</head>
+
+<body>
+  <main id="container">
+
+    <!-- ════════════════════════════════════════════════════════════════════════════
+         HEADER - editorial dark (estilo CBS News)
+         ════════════════════════════════════════════════════════════════════════════ -->
+    <header class="news-header">
+      <div class="icon-btn" aria-hidden="true">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
+      <div class="brand">
+        <span class="brand-dot"></span>
+        HEALTH NEWS
+      </div>
+      <div class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></div>
+    </header>
+
+    <!-- ════════════════════════════════════════════════════════════════════════════
+         SEÇÃO PRINCIPAL - by Dr / vídeo VTURB / headline / LIVE
+         ════════════════════════════════════════════════════════════════════════════ -->
+    <section class="principal">
+
+      <div class="headline-block">
+        <!-- TEXTO: HEADLINE PRINCIPAL -->
+        <h1 id="vturb-headline-text">
+          Elon Musk Reveals The 15-Second Vicks Trick For Memory Loss and Dementia!
+        </h1>
+
+        <div class="live-badge">LIVE</div>
+      </div>
+
+      <div class="video_vturb">
+        <!-- VTURB EMBED -->
+<vturb-smartplayer id="vid-6a9b1a71f5882a0f8e3ad61c" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 177.63157894736844% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/03ccc889-e246-4eff-a982-346fd4a664fd/players/6a9b1a71f5882a0f8e3ad61c/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+<!-- END VTURB EMBED -->
+
+        <!-- DELAY VTURB: 50:38 = 3038 segundos -->
+        <script type="text/javascript">
+          (function () {
+            var delaySeconds = 3038;
+            var vturbPlayer = document.querySelector("vturb-smartplayer");
+            if (!vturbPlayer) return;
+
+            vturbPlayer.addEventListener("player:ready", function () {
+              vturbPlayer.displayHiddenElements(delaySeconds, [".esconder"], {
+                persist: true
+              });
+            });
+          })();
+        </script>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════
+           SEÇÃO ESCONDIDA - aparece após delay do VTURB
+           ══════════════════════════════════════════════════════════════════════ -->
+      <div class="esconder">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SEÇÃO DE OFERTAS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section id="scrolldown" class="mw-offers">
+          <div class="mw-offers-head">
+            <h2 class="mw-offers-title">Choose Your MindWake Package</h2>
+            <p class="mw-offers-sub">60 day money-back guarantee · Secure checkout via BuyGoods</p>
+          </div>
+
+          <div class="mw-offers-stage">
+            <div class="mw-offers-grid">
+
+              <!-- 2 BOTTLES / BASIC -->
+              <article class="mw-offer-card">
+                <div class="mw-offer-card__header">Basic</div>
+                <div class="mw-offer-card__body">
+                  <div class="mw-offer-card__qty">2 BOTTLES</div>
+                  <div class="mw-offer-card__supply">60 Day Supply</div>
+
+                  <div class="mw-offer-card__image-wrap">
+                    <img class="mw-offer-card__image"
+                         src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/2-1.png?quality=79"
+                         alt="MindWake 2 Bottles">
+                  </div>
+
+                  <div class="mw-offer-card__price">
+                    <strong>$79</strong><span>/Bottle</span>
+                  </div>
+
+                  <ul class="mw-perks">
+                    <li><span class="mw-mark mw-mark--no">×</span>60-DAY GUARANTEE</li>
+                    <li><span class="mw-mark mw-mark--no">×</span>FAST &amp; FREE SHIPPING</li>
+                    <li><span class="mw-mark mw-mark--no">×</span>FREE BONUSES!</li>
+                  </ul>
+
+                  <!-- CHECKOUT PLACEHOLDER: replace with the 2-bottle affiliate link later -->
+                  <a class="mw-offer-card__cta buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 2 Bottles">
+                    <img src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/button-1.png?quality=80" alt="Buy Now">
+                  </a>
+                  <img class="mw-offer-card__cards"
+                       src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80"
+                       alt="Accepted payment methods">
+
+                  <div class="mw-offer-card__total">total: <s>$358</s> <strong>$158</strong></div>
+                </div>
+              </article>
+
+              <!-- 6 BOTTLES / MOST POPULAR -->
+              <article class="mw-offer-card mw-offer-card--popular">
+                <div class="mw-offer-card__header">Most Popular</div>
+                <div class="mw-offer-card__body">
+                  <div class="mw-offer-card__qty">6 BOTTLES</div>
+                  <div class="mw-offer-card__supply">180 Day Supply</div>
+
+                  <div class="mw-offer-card__image-wrap">
+                    <img class="mw-offer-card__image"
+                         src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/6-2.png?quality=85"
+                         alt="MindWake 6 Bottles">
+                    <div class="mw-save-badge">SAVE<strong>$780</strong>TODAY</div>
+                  </div>
+
+                  <div class="mw-offer-card__price">
+                    <strong>$49</strong><span>/Bottle</span>
+                  </div>
+
+                  <ul class="mw-perks">
+                    <li><span class="mw-mark mw-mark--yes">✓</span>2 FREE BONUSES!</li>
+                    <li><span class="mw-mark mw-mark--yes">✓</span>FAST &amp; FREE SHIPPING</li>
+                    <li><span class="mw-mark mw-mark--yes">✓</span>60 DAYS GUARANTEE</li>
+                  </ul>
+
+                  <!-- CHECKOUT PLACEHOLDER: replace with the 6-bottle affiliate link later -->
+                  <a class="mw-offer-card__cta buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 6 Bottles">
+                    <img src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/button-1.png?quality=80" alt="Buy Now">
+                  </a>
+                  <img class="mw-offer-card__cards"
+                       src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80"
+                       alt="Accepted payment methods">
+
+                  <div class="mw-offer-card__total">total: <s>$1074</s> <strong>$294</strong></div>
+                </div>
+              </article>
+
+              <!-- 3 BOTTLES / BUNDLE -->
+              <article class="mw-offer-card">
+                <div class="mw-offer-card__header">Bundle</div>
+                <div class="mw-offer-card__body">
+                  <div class="mw-offer-card__qty">3 BOTTLES</div>
+                  <div class="mw-offer-card__supply">90 Day Supply</div>
+
+                  <div class="mw-offer-card__image-wrap">
+                    <img class="mw-offer-card__image"
+                         src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/3-3.png?quality=86"
+                         alt="MindWake 3 Bottles">
+                    <div class="mw-save-badge">SAVE<strong>$330</strong>TODAY</div>
+                  </div>
+
+                  <div class="mw-offer-card__price">
+                    <strong>$69</strong><span>/Bottle</span>
+                  </div>
+
+                  <ul class="mw-perks">
+                    <li><span class="mw-mark mw-mark--no">×</span>FREE BONUSES!</li>
+                    <li><span class="mw-mark mw-mark--yes">✓</span>FAST &amp; FREE SHIPPING</li>
+                    <li><span class="mw-mark mw-mark--yes">✓</span>60 DAYS GUARANTEE</li>
+                  </ul>
+
+                  <!-- CHECKOUT PLACEHOLDER: replace with the 3-bottle affiliate link later -->
+                  <a class="mw-offer-card__cta buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 3 Bottles">
+                    <img src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/button-1.png?quality=80" alt="Buy Now">
+                  </a>
+                  <img class="mw-offer-card__cards"
+                       src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80"
+                       alt="Accepted payment methods">
+
+                  <div class="mw-offer-card__total">total: <s>$537</s> <strong>$207</strong></div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="mw-preview-note">Preview version — checkout links will be added after you send the affiliate URLs.</div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════════════════════
+             SEÇÃO DE GARANTIA
+             ════════════════════════════════════════════════════════════════════ -->
+        <section class="guarantee-section">
+          <div class="guarantee-container">
+
+            <!-- TEXTO: Título da garantia -->
+            <h2 class="guarantee-title">
+              100% Satisfaction or Your Money Back
+              <span class="red-highlight">60-Day Unconditional Guarantee</span>
+            </h2>
+
+            <div class="guarantee-content">
+              <!-- 🖼️ Badge de garantia -->
+              <div class="guarantee-badge">
+                <img loading="lazy" decoding="async" src="images/guarantee-optimized.webp" alt="Guarantee Badge">
+              </div>
+
+              <!-- TEXTO: Descrição da garantia -->
+              <div class="guarantee-text">
+                <p>We're so certain that MindWake will give you remarkable results that we're willing to shoulder all the risk for a full 60 days. From the moment your order arrives, start taking MindWake daily and pay close attention to how you feel. Within just a few days, you may notice sharper recall, improved focus, and clearer thinking. Continue for a few weeks or months, and you will experience real changes in your memory function, mental clarity, and overall cognitive performance.</p>
+                <p>If at any point during these 60 days you don't feel MindWake is delivering on the promise we've made, just let us know. Our team will refund every penny — no questions asked and no need to return anything.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════════════════════
+             COMENTÁRIOS FB
+             ════════════════════════════════════════════════════════════════════ -->
+        <div id="fb-comments" class="mg-auto">
+          <h2 class="fb-heading"><b>1,369 Comments</b></h2>
+          <div class="comments-container">
+
+            <div class="comment" data-comment-id="1">
+              <img loading="lazy" decoding="async" class="user-avatar" src="images/avatar-1.webp" alt="">
+              <div class="comment-data">
+                <div class="user">
+                  <p class="name">Samantha Anderson</p>
+                  <p class="text">Dr., it's been 15 consecutive days since I started, and I've already noticed a big improvement in my mental clarity and focus. I'll keep going because I'm feeling amazing! 😍</p>
+                </div>
+                <div class="buttons">
+                  <like>Like</like><span>·</span><answer>Reply</answer><span>·</span><time>2h</time>
+                </div>
+              </div>
+              <likes>23</likes>
+            </div>
+
+            <div class="comment answer" data-comment-id="6b">
+              <img loading="lazy" decoding="async" class="user-avatar" src="images/avatar-2.webp" alt="">
+              <div class="comment-data">
+                <div class="user">
+                  <p class="name">Jennifer Davis</p>
+                  <p class="text">FINALLY, SOMEONE WHO DOESN'T BEAT AROUND THE BUSH TO ASK FOR MONEY IN THE END, THANK YOUUUU! I STARTED TODAY ❤</p>
+                </div>
+                <div class="buttons">
+                  <like>Like</like><span>·</span><answer>Reply</answer><span>·</span><time>35 min</time>
+                </div>
+              </div>
+              <likes>17</likes>
+            </div>
+
+            <div class="comment answer" data-comment-id="6c">
+              <img loading="lazy" decoding="async" class="user-avatar" src="images/avatar-3.webp" alt="">
+              <div class="comment-data">
+                <div class="user">
+                  <p class="name">Tommy Thompson</p>
+                  <p class="text">You explain very well, it's what we, the laypeople, need. I'm going to start using this trick today itself.</p>
+                </div>
+                <div class="buttons">
+                  <like>Like</like><span>·</span><answer>Reply</answer><span>·</span><time>7 min</time>
+                </div>
+              </div>
+              <likes>11</likes>
+            </div>
+
+            <div class="comment" data-comment-id="3">
+              <img loading="lazy" decoding="async" class="user-avatar" src="images/avatar-4.webp" alt="">
+              <div class="comment-data">
+                <div class="user">
+                  <p class="name">Cora Martinez</p>
+                  <p class="text">I've been applying these tips for 17 days now, and I've already noticed a significant improvement in my memory. I was even surprised by the results; it's impressive how some simple adjustments can make a difference! Loved it ❤️❤️❤️</p>
+                </div>
+                <div class="buttons">
+                  <like>Like</like><span>·</span><answer>Reply</answer><span>·</span><time>1h</time>
+                </div>
+              </div>
+              <likes>34</likes>
+            </div>
+
+            <div class="comment" data-comment-id="4">
+              <img loading="lazy" decoding="async" class="user-avatar" src="images/avatar-5.webp" alt="">
+              <div class="comment-data">
+                <div class="user">
+                  <p class="name">Emily Johnson</p>
+                  <p class="text">Very well explained and straightforward video, no beating around the bush, congratulations Dr. 😍</p>
+                </div>
+                <div class="buttons">
+                  <like>Like</like><span>·</span><answer>Reply</answer><span>·</span><time>1h</time>
+                </div>
+              </div>
+              <likes>54</likes>
+            </div>
+
+            <div class="comment" data-comment-id="5">
+              <img loading="lazy" decoding="async" class="user-avatar" src="images/avatar-6.webp" alt="">
+              <div class="comment-data">
+                <div class="user">
+                  <p class="name">Lauren Brown</p>
+                  <p class="text">Dr., you've helped me a lot. A few years ago, I went through a difficult period and started looking for ways to improve my mind and well-being. I started applying your techniques 5 days ago, and I already feel like a different person – more energized, with greater mental clarity, and more desire to face the day. What a blessing!</p>
+                </div>
+                <div class="buttons">
+                  <like>Like</like><span>·</span><answer>Reply</answer><span>·</span><time>19 min</time>
+                </div>
+              </div>
+              <likes>10</likes>
+            </div>
+
+            <h4 class="comments-closed">This post is no longer receiving comments!</h4>
+          </div>
+        </div>
+
+      </div>
+      <!-- FIM .esconder -->
+
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════════════
+         FOOTER MINDWAKE
+         ════════════════════════════════════════════════════════════════════════════ -->
+    <footer class="mindwake-footer esconder">
+      <div class="mindwake-footer__inner">
+        <nav class="mindwake-footer__links" aria-label="Footer links">
+          <a href="#" class="terms-conditions">Terms &amp; Conditions</a>
+          <a href="#" class="privacy-policy">Privacy Policy</a>
+          <a href="#" class="contact">Contact</a>
+          <a href="#" class="disclaimer">Disclaimer</a>
+          <a href="#" class="reference">Reference</a>
+          <a href="#" class="refund">Refund</a>
+          <a href="#" class="shipping">Shipping</a>
+        </nav>
+
+        <div class="mindwake-footer__disclaimer">
+          These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. The information provided on this site is for informational purposes only and is not intended as a substitute for advice from your physician or other health care professional or any information contained on or in any product label or packaging. You should not use the information on this site for diagnosis or treatment of any health problem or for prescription of any medication or other treatment. You should consult with a healthcare professional before starting any diet, exercise or supplementation program, before taking any medication, or if you have or suspect you might have a health problem.
+        </div>
+
+        <div class="mindwake-footer__copyright">
+          Copyright &copy; MindWake. All Rights Reserved. 19655 E 35th Drive Suite 100 Aurora, CO 80011
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    CLEANUP/AUDIT:
+    - No UTMfy pixel added yet.
+    - Removed inherited jQuery/player/buygoods-tracking scripts and injected Cloudflare challenge snippet.
+    - Only VTurb embed + VTurb delay logic remain as executable scripts.
+    - Buy buttons carry smartplayer-click-event for VTurb click analytics.
+  -->
+</body></html>
