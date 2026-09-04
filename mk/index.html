@@ -1053,6 +1053,283 @@
 
 </style>
 
+<style>
+  /* =====================================================================
+     MINDWAKE — NOVO BLOCO DE OFERTAS (layout azul/dourado/verde)
+     Adaptado visualmente do HTML de referência enviado pelo usuário.
+     ===================================================================== */
+  .mw2-offers {
+    width: calc(100vw - 24px);
+    max-width: 1240px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 34px;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #fff;
+    color: #001644;
+  }
+  .mw2-promo {
+    position: relative;
+    background: #0839A3;
+    text-align: center;
+    padding: 22px 18px 25px;
+  }
+  .mw2-promo h2 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Manrope', 'Sora', Arial, sans-serif;
+    font-size: clamp(22px, 4vw, 38px);
+    line-height: 1.04;
+    font-weight: 800;
+  }
+  .mw2-promo h2 strong { color: #FFD85E; }
+  .mw2-promo::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -34px;
+    transform: translateX(-50%);
+    width: min(62%, 680px);
+    height: 35px;
+    background: #0839A3;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    z-index: 2;
+  }
+  .mw2-inner {
+    background: #fff;
+    padding: 62px 18px 46px;
+  }
+  .mw2-heading { text-align: center; margin: 0 auto 28px; }
+  .mw2-heading h3 {
+    color: #001644;
+    font-family: 'Manrope', 'Sora', Arial, sans-serif;
+    font-size: clamp(24px, 3.6vw, 36px);
+    font-weight: 800;
+    line-height: 1.15;
+  }
+  .mw2-heading h3 span { color: #c9a227; }
+  .mw2-heading p {
+    color: #756a6b;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .mw2-stage {
+    background: #F0F3FF;
+    border-radius: 34px;
+    padding: 28px;
+  }
+  .mw2-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+  }
+  .mw2-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid #0839A3;
+    border-radius: 16px;
+    background: #fff;
+    min-width: 0;
+    box-shadow: 0 4px 14px rgba(0,22,68,.06);
+  }
+  .mw2-card--best {
+    border-color: #e8b104;
+    background: #fff7df;
+    box-shadow: 0 10px 26px rgba(201,162,39,.18);
+  }
+  .mw2-card-head {
+    background: #0839A3;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Manrope', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    padding: 10px 8px;
+    letter-spacing: .15px;
+  }
+  .mw2-card--best .mw2-card-head {
+    color: #001644;
+    background: linear-gradient(90deg,#e8b104 0%,#ffdc6d 30%,#e8b104 60%,#ffdc6d 82%,#e8b104 100%);
+  }
+  .mw2-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 16px 18px 18px;
+    text-align: center;
+  }
+  .mw2-qty {
+    color: #0839A3;
+    font-family: 'Manrope', Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(25px, 3vw, 34px);
+    line-height: 1.05;
+  }
+  .mw2-supply {
+    margin-top: 5px;
+    color: #001644;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .mw2-img-wrap {
+    position: relative;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0 2px;
+  }
+  .mw2-img {
+    max-width: 92%;
+    max-height: 180px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 7px 10px rgba(0,0,0,.10));
+  }
+  .mw2-save {
+    position: absolute;
+    right: 2px;
+    bottom: 18px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: #000206;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    font-weight: 700;
+    box-shadow: 0 3px 9px rgba(0,0,0,.20);
+  }
+  .mw2-save b { font-size: 12px; margin-top: 2px; }
+  .mw2-price {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    line-height: 1;
+    margin: 5px 0 13px;
+    color: #756a6b;
+  }
+  .mw2-price strong {
+    color: #001644;
+    font-family: 'Manrope', Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -2px;
+  }
+  .mw2-price strong small {
+    font-size: 16px;
+    vertical-align: top;
+    position: relative;
+    top: -15px;
+    margin-right: 2px;
+  }
+  .mw2-price span { font-size: 13px; margin: 0 0 5px 4px; }
+  .mw2-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .mw2-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    text-align: left;
+    color: #756a6b;
+    font-size: 11px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .mw2-benefits .ok, .mw2-benefits .no {
+    display: inline-grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex: 0 0 16px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+  }
+  .mw2-benefits .ok { background: #1fa604; }
+  .mw2-benefits .no { background: #d83b3b; }
+  .mw2-today {
+    margin-top: auto;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 7px;
+    color: #001644;
+    font-size: 13px;
+  }
+  .mw2-today s { color: #756a6b; text-decoration-color: #d32f2f; }
+  .mw2-today strong { color: #001644; font-size: 14px; }
+  .mw2-today small { font-size: 9px; font-weight: 800; }
+  .mw2-buy {
+    width: 100%;
+    max-width: 290px;
+    margin: 0 auto 9px;
+    min-height: 48px;
+    border-radius: 40px;
+    background: linear-gradient(180deg,#35f60f 0%,#1fa604 100%);
+    border-bottom: 5px solid #116800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    color: #fff;
+    font-family: 'Manrope', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
+    box-shadow: 0 5px 10px rgba(31,166,4,.18);
+  }
+  .mw2-buy:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 8px 18px rgba(31,166,4,.28); }
+  .mw2-buy svg { width: 20px; height: 20px; fill: currentColor; }
+  .mw2-payments {
+    display: block;
+    width: min(72%, 210px);
+    margin: 0 auto 7px;
+  }
+  .mw2-total {
+    color: #756a6b;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .mw2-total s { text-decoration-color: #d32f2f; }
+  .mw2-total strong { color: #001644; margin-left: 3px; }
+
+  @media (max-width: 900px) {
+    .mw2-offers { width: calc(100vw - 12px); border-radius: 20px; }
+    .mw2-inner { padding: 56px 10px 28px; }
+    .mw2-stage { border-radius: 24px; padding: 16px 12px; }
+    .mw2-grid { grid-template-columns: 1fr; gap: 18px; }
+    .mw2-card--best { order: -1; }
+    .mw2-card { max-width: 430px; width: 100%; margin: 0 auto; }
+    .mw2-img-wrap { height: 205px; }
+    .mw2-img { max-height: 195px; }
+    .mw2-qty { font-size: 30px; }
+    .mw2-price strong { font-size: 48px; }
+    .mw2-benefits li { font-size: 12px; }
+  }
+</style>
 </head>
 
 <body>
@@ -1117,127 +1394,99 @@
         <!-- ═══════════════════════════════════════════════════════════════════
              SEÇÃO DE OFERTAS
              ═══════════════════════════════════════════════════════════════════ -->
-        <section id="scrolldown" class="mw-offers">
-          <div class="mw-offers-head">
-            <h2 class="mw-offers-title">Choose Your MindWake Package</h2>
-            <p class="mw-offers-sub">60 day money-back guarantee · Secure checkout via BuyGoods</p>
+
+        <section id="scrolldown" class="mw2-offers">
+          <div class="mw2-promo">
+            <h2>Claim Your Discounted <strong>MindWake</strong><br>Below For Huge Savings</h2>
           </div>
 
-          <div class="mw-offers-stage">
-            <div class="mw-offers-grid">
+          <div class="mw2-inner">
+            <div class="mw2-heading">
+              <h3>Order Your <span>MindWake</span></h3>
+              <p>Select your package below. The 6-bottle package is our best seller.</p>
+            </div>
 
-              <!-- 2 BOTTLES / BASIC -->
-              <article class="mw-offer-card">
-                <div class="mw-offer-card__header">Basic</div>
-                <div class="mw-offer-card__body">
-                  <div class="mw-offer-card__qty">2 BOTTLES</div>
-                  <div class="mw-offer-card__supply">60 Day Supply</div>
+            <div class="mw2-stage">
+              <div class="mw2-grid">
 
-                  <div class="mw-offer-card__image-wrap">
-                    <img class="mw-offer-card__image"
-                         src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/2-1.png?quality=79"
-                         alt="MindWake 2 Bottles">
+                <!-- 2 BOTTLES -->
+                <article class="mw2-card">
+                  <div class="mw2-card-head">2 Bottles</div>
+                  <div class="mw2-card-body">
+                    <div class="mw2-qty">2 BOTTLES</div>
+                    <div class="mw2-supply">60 Day Supply</div>
+                    <div class="mw2-img-wrap">
+                      <img class="mw2-img" src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/2-1.png?quality=79" alt="MindWake 2 Bottles">
+                    </div>
+                    <div class="mw2-price"><strong><small>$</small>89</strong><span>/bottle</span></div>
+                    <ul class="mw2-benefits">
+                      <li><span class="no">×</span>No Free Shipping</li>
+                    </ul>
+                    <div class="mw2-today"><s>$358</s><strong>$178</strong><small>today</small></div>
+                    <a class="mw2-buy buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 2 Bottles">
+                      <span>BUY NOW</span>
+                      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+                    </a>
+                    <img class="mw2-payments" src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80" alt="Payment methods">
+                    <div class="mw2-total">TOTAL: <s>$358</s> <strong>$178</strong></div>
                   </div>
+                </article>
 
-                  <div class="mw-offer-card__price">
-                    <strong>$79</strong><span>/Bottle</span>
+                <!-- 6 BOTTLES / BEST SELLER -->
+                <article class="mw2-card mw2-card--best">
+                  <div class="mw2-card-head">⭐ Best Seller</div>
+                  <div class="mw2-card-body">
+                    <div class="mw2-qty">6 BOTTLES</div>
+                    <div class="mw2-supply">180 Day Supply</div>
+                    <div class="mw2-img-wrap">
+                      <img class="mw2-img" src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/6-2.png?quality=85" alt="MindWake 6 Bottles">
+                      <div class="mw2-save"><span>Save</span><b>$780</b><span>Today</span></div>
+                    </div>
+                    <div class="mw2-price"><strong><small>$</small>49</strong><span>/bottle</span></div>
+                    <ul class="mw2-benefits">
+                      <li><span class="ok">✓</span>FAST &amp; FREE SHIPPING</li>
+                      <li><span class="ok">✓</span>60 DAYS GUARANTEE</li>
+                    </ul>
+                    <div class="mw2-today"><s>$1,074</s><strong>$294</strong><small>today</small></div>
+                    <a class="mw2-buy buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 6 Bottles">
+                      <span>BUY NOW</span>
+                      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+                    </a>
+                    <img class="mw2-payments" src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80" alt="Payment methods">
+                    <div class="mw2-total">TOTAL: <s>$1,074</s> <strong>$294</strong></div>
                   </div>
+                </article>
 
-                  <ul class="mw-perks">
-                    <li><span class="mw-mark mw-mark--no">×</span>60-DAY GUARANTEE</li>
-                    <li><span class="mw-mark mw-mark--no">×</span>FAST &amp; FREE SHIPPING</li>
-                    <li><span class="mw-mark mw-mark--no">×</span>FREE BONUSES!</li>
-                  </ul>
-
-                  <!-- CHECKOUT PLACEHOLDER: replace with the 2-bottle affiliate link later -->
-                  <a class="mw-offer-card__cta buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 2 Bottles">
-                    <img src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/button-1.png?quality=80" alt="Buy Now">
-                  </a>
-                  <img class="mw-offer-card__cards"
-                       src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80"
-                       alt="Accepted payment methods">
-
-                  <div class="mw-offer-card__total">total: <s>$358</s> <strong>$158</strong></div>
-                </div>
-              </article>
-
-              <!-- 6 BOTTLES / MOST POPULAR -->
-              <article class="mw-offer-card mw-offer-card--popular">
-                <div class="mw-offer-card__header">Most Popular</div>
-                <div class="mw-offer-card__body">
-                  <div class="mw-offer-card__qty">6 BOTTLES</div>
-                  <div class="mw-offer-card__supply">180 Day Supply</div>
-
-                  <div class="mw-offer-card__image-wrap">
-                    <img class="mw-offer-card__image"
-                         src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/6-2.png?quality=85"
-                         alt="MindWake 6 Bottles">
-                    <div class="mw-save-badge">SAVE<strong>$780</strong>TODAY</div>
+                <!-- 3 BOTTLES / STANDARD -->
+                <article class="mw2-card">
+                  <div class="mw2-card-head">Standard</div>
+                  <div class="mw2-card-body">
+                    <div class="mw2-qty">3 BOTTLES</div>
+                    <div class="mw2-supply">90 Day Supply</div>
+                    <div class="mw2-img-wrap">
+                      <img class="mw2-img" src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/3-3.png?quality=86" alt="MindWake 3 Bottles">
+                      <div class="mw2-save"><span>Save</span><b>$321</b><span>Today</span></div>
+                    </div>
+                    <div class="mw2-price"><strong><small>$</small>72</strong><span>/bottle</span></div>
+                    <ul class="mw2-benefits">
+                      <li><span class="ok">✓</span>60-Day Guarantee</li>
+                      <li><span class="ok">✓</span>Fast &amp; Free Shipping</li>
+                    </ul>
+                    <div class="mw2-today"><s>$537</s><strong>$216</strong><small>today</small></div>
+                    <a class="mw2-buy buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 3 Bottles">
+                      <span>BUY NOW</span>
+                      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+                    </a>
+                    <img class="mw2-payments" src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80" alt="Payment methods">
+                    <div class="mw2-total">TOTAL: <s>$537</s> <strong>$216</strong></div>
                   </div>
+                </article>
 
-                  <div class="mw-offer-card__price">
-                    <strong>$49</strong><span>/Bottle</span>
-                  </div>
-
-                  <ul class="mw-perks">
-                    <li><span class="mw-mark mw-mark--yes">✓</span>2 FREE BONUSES!</li>
-                    <li><span class="mw-mark mw-mark--yes">✓</span>FAST &amp; FREE SHIPPING</li>
-                    <li><span class="mw-mark mw-mark--yes">✓</span>60 DAYS GUARANTEE</li>
-                  </ul>
-
-                  <!-- CHECKOUT PLACEHOLDER: replace with the 6-bottle affiliate link later -->
-                  <a class="mw-offer-card__cta buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 6 Bottles">
-                    <img src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/button-1.png?quality=80" alt="Buy Now">
-                  </a>
-                  <img class="mw-offer-card__cards"
-                       src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80"
-                       alt="Accepted payment methods">
-
-                  <div class="mw-offer-card__total">total: <s>$1074</s> <strong>$294</strong></div>
-                </div>
-              </article>
-
-              <!-- 3 BOTTLES / BUNDLE -->
-              <article class="mw-offer-card">
-                <div class="mw-offer-card__header">Bundle</div>
-                <div class="mw-offer-card__body">
-                  <div class="mw-offer-card__qty">3 BOTTLES</div>
-                  <div class="mw-offer-card__supply">90 Day Supply</div>
-
-                  <div class="mw-offer-card__image-wrap">
-                    <img class="mw-offer-card__image"
-                         src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/3-3.png?quality=86"
-                         alt="MindWake 3 Bottles">
-                    <div class="mw-save-badge">SAVE<strong>$330</strong>TODAY</div>
-                  </div>
-
-                  <div class="mw-offer-card__price">
-                    <strong>$69</strong><span>/Bottle</span>
-                  </div>
-
-                  <ul class="mw-perks">
-                    <li><span class="mw-mark mw-mark--no">×</span>FREE BONUSES!</li>
-                    <li><span class="mw-mark mw-mark--yes">✓</span>FAST &amp; FREE SHIPPING</li>
-                    <li><span class="mw-mark mw-mark--yes">✓</span>60 DAYS GUARANTEE</li>
-                  </ul>
-
-                  <!-- CHECKOUT PLACEHOLDER: replace with the 3-bottle affiliate link later -->
-                  <a class="mw-offer-card__cta buylink smartplayer-click-event" href="#" onclick="return false;" aria-label="Buy MindWake 3 Bottles">
-                    <img src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/button-1.png?quality=80" alt="Buy Now">
-                  </a>
-                  <img class="mw-offer-card__cards"
-                       src="https://media.atomicatmedia.net/u/BOw71iZQeJVHVa5lnRhFfwP9M5A2/Pictures/share/pageecf6GYd/cards-2.png?quality=80"
-                       alt="Accepted payment methods">
-
-                  <div class="mw-offer-card__total">total: <s>$537</s> <strong>$207</strong></div>
-                </div>
-              </article>
-
+              </div>
             </div>
           </div>
-
-          <div class="mw-preview-note">Preview version — checkout links will be added after you send the affiliate URLs.</div>
         </section>
+
 
         <!-- ════════════════════════════════════════════════════════════════════
              SEÇÃO DE GARANTIA
