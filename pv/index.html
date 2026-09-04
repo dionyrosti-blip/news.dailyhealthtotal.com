@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mind Wake | A Personal Account</title>
+<style>
+  :root{
+    --bg:#f4f1eb;
+    --paper:#fff;
+    --ink:#1d2329;
+    --muted:#6d7378;
+    --green:#1f5a45;
+    --green2:#2f765c;
+    --soft:#eef5ef;
+    --line:#e7e3dc;
+    --warn:#fff6db;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Georgia, 'Times New Roman', serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.67;
+  }
+  .page{
+    width:min(860px, calc(100% - 24px));
+    margin:28px auto 48px;
+    background:var(--paper);
+    box-shadow:0 12px 40px rgba(28,32,36,.08);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .article{padding:52px 70px 34px}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.13em;
+    font:700 12px/1.2 Arial, Helvetica, sans-serif;
+    color:var(--green);
+    margin-bottom:8px;
+  }
+  .meta{
+    font:14px/1.4 Arial, Helvetica, sans-serif;
+    color:var(--muted);
+    margin-bottom:22px;
+  }
+  h1,h2,h3,h4{line-height:1.13;margin:0 0 18px;color:#171b1f}
+  h1{font-size:clamp(38px,6vw,62px);letter-spacing:-.035em}
+  h2{font-size:clamp(28px,4vw,40px);margin-top:42px}
+  h3{font-size:24px;margin-top:32px}
+  h4{font-size:18px}
+  p{font-size:19px;margin:0 0 20px}
+  .lead{font-size:22px;color:#30363b}
+  .hero-img,.story-img{
+    width:100%;display:block;object-fit:cover;border-radius:14px;margin:28px 0;
+    background:#ddd;
+  }
+  .hero-img{height:420px}
+  .story-img{height:360px}
+  blockquote{
+    border-left:5px solid var(--green);
+    margin:30px 0;
+    padding:18px 24px;
+    background:#f7faf8;
+    border-radius:0 12px 12px 0;
+    font-size:22px;
+    font-style:italic;
+  }
+  .cta-box{
+    margin:34px 0;
+    padding:28px;
+    text-align:center;
+    border-radius:16px;
+    background:linear-gradient(135deg,#173f32,#2a684f);
+    color:#fff;
+  }
+  .cta-box h3{color:#fff;margin-top:0}
+  .cta-box p{font-size:17px;color:rgba(255,255,255,.88)}
+  .fake-btn{
+    appearance:none;border:0;border-radius:999px;
+    background:#fff;color:#173f32;
+    font:800 16px/1 Arial,Helvetica,sans-serif;
+    padding:17px 28px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+    cursor:default;
+  }
+  .section-card{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px;
+    margin:28px 0;
+    background:#fff;
+  }
+  .warning-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px;
+  }
+  .warning{
+    border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff;
+  }
+  .warning .icon{font-size:28px}
+  .warning strong{display:block;font:700 16px/1.35 Arial,Helvetica,sans-serif;margin:8px 0 5px}
+  .warning span{font:14px/1.5 Arial,Helvetica,sans-serif;color:#596067}
+  .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+    margin:28px 0;background:#f7f4ef;border-radius:16px;padding:20px;
+  }
+  .stat{text-align:center}
+  .stat b{display:block;font:800 28px/1.1 Arial,Helvetica,sans-serif;color:var(--green)}
+  .stat span{display:block;font:12px/1.35 Arial,Helvetica,sans-serif;color:#62696e;margin-top:6px}
+  .steps{counter-reset:s;display:grid;gap:14px;margin:20px 0}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+  .step:before{
+    counter-increment:s;content:counter(s);
+    width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+    background:var(--green);color:#fff;font:800 16px Arial,Helvetica,sans-serif;
+  }
+  .step h4{margin:2px 0 4px;font-family:Arial,Helvetica,sans-serif}
+  .step p{font:15px/1.55 Arial,Helvetica,sans-serif;color:#5c6267;margin:0}
+  .food-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+  .food-card{border-radius:14px;padding:22px;background:#f6faf7;border:1px solid #dfece4}
+  .food-card.bad{background:#fff7f5;border-color:#f1dfdb}
+  .food-card h4{font-family:Arial,Helvetica,sans-serif}
+  .food-card ul{padding-left:20px;margin:0;font:15px/1.9 Arial,Helvetica,sans-serif}
+  .recipe{
+    background:#fbf8ed;border:1px solid #ede2bd;border-radius:18px;padding:28px;margin:30px 0;
+  }
+  .recipe-label{font:700 12px Arial,Helvetica,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8b6d12}
+  .recipe ul,.recipe ol{font:15px/1.7 Arial,Helvetica,sans-serif;padding-left:20px}
+  .compound-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 30px}
+  .compound{border:1px solid var(--line);border-radius:13px;padding:16px;text-align:center;min-height:125px}
+  .compound .emoji{font-size:30px;display:block;margin-bottom:6px}
+  .compound b{font:700 14px Arial,Helvetica,sans-serif;display:block;margin-bottom:4px}
+  .compound small{font:12px/1.4 Arial,Helvetica,sans-serif;color:#62696f}
+  .refs{font:13px/1.55 Arial,Helvetica,sans-serif;color:#6a7176}
+  .refs ol{padding-left:20px}
+  .disclaimer{
+    margin-top:30px;padding:18px;border-radius:12px;background:var(--warn);
+    font:12px/1.6 Arial,Helvetica,sans-serif;color:#635b3c;
+  }
+  footer{
+    padding:22px 70px 34px;border-top:1px solid var(--line);text-align:center;
+    font:12px/1.6 Arial,Helvetica,sans-serif;color:#73797d;background:#fbfaf8;
+  }
+  .no-link-note{font-weight:700;color:#8c7340}
+  @media (max-width:720px){
+    .page{width:100%;margin:0;border-radius:0;box-shadow:none}
+    .article{padding:30px 20px 22px}
+    footer{padding:20px}
+    h1{font-size:42px}
+    p,.lead{font-size:18px}
+    .hero-img{height:280px}.story-img{height:260px}
+    .warning-grid,.food-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .compound-grid{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <article class="article">
+    <div class="eyebrow">Mind Wake · A Personal Account</div>
+    <div class="meta">Updated September 2026 · 6 minute read</div>
+
+    <h1>I Saw Memory Changes Up Close. Then I Started Noticing Them in Myself.</h1>
+    <p class="lead">This editorial-style page introduces Mind Wake while keeping all outbound affiliate destinations, tracking pixels and analytics scripts removed.</p>
+
+    <p>For years I watched someone close to me struggle with little moments that slowly became harder to ignore: repeated questions, misplaced objects, missed appointments and conversations that seemed to disappear minutes later.</p>
+
+    <img class="hero-img" src="https://images.pexels.com/photos/3807755/pexels-photo-3807755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Older woman looking through a window">
+
+    <p>At first, every moment had an explanation. Stress. Lack of sleep. A busy week. But over time, the pattern became impossible to dismiss.</p>
+
+    <h2>Then I noticed the same kind of moments in my own life.</h2>
+    <p>I started forgetting small things that normally felt automatic. I would walk into a room and stop, trying to remember why I was there. I would put something down and have no idea where it went just minutes later.</p>
+
+    <blockquote>I decided that ignoring those changes would not make them disappear. I wanted to understand what practical habits could support healthy aging and everyday mental clarity.</blockquote>
+
+    <img class="story-img" src="https://images.pexels.com/photos/3807547/pexels-photo-3807547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Woman sitting alone indoors">
+
+    <h2>What I found changed the way I looked at daily routines.</h2>
+    <p>I began paying closer attention to sleep, movement, hydration, social connection and food quality. None of those habits are magic, and no single routine can diagnose, treat or cure a medical condition. But together, they helped me build a more intentional routine around brain health.</p>
+
+    <div class="cta-box">
+      <h3>Discover Mind Wake</h3>
+      <p>This section is prepared for Mind Wake. The button is intentionally non-clickable and contains no affiliate or external destination URL.</p>
+      <button class="fake-btn" type="button">Learn About Mind Wake</button>
+    </div>
+
+    <h2>Do any of these feel familiar?</h2>
+    <p>Occasional forgetfulness can happen for many reasons. Persistent or worsening changes deserve a conversation with a qualified healthcare professional.</p>
+
+    <div class="warning-grid">
+      <div class="warning"><div class="icon">🔁</div><strong>Repeating questions</strong><span>Asking the same thing again soon after a conversation.</span></div>
+      <div class="warning"><div class="icon">🔑</div><strong>Misplacing everyday objects</strong><span>Frequently finding common items in unusual places.</span></div>
+      <div class="warning"><div class="icon">🍳</div><strong>Familiar tasks feel harder</strong><span>Needing more effort to follow routines that used to feel automatic.</span></div>
+      <div class="warning"><div class="icon">😶</div><strong>Withdrawing socially</strong><span>Avoiding conversations because they feel tiring or difficult to follow.</span></div>
+      <div class="warning"><div class="icon">📅</div><strong>Missing appointments</strong><span>Dates or plans becoming harder to keep track of than before.</span></div>
+      <div class="warning"><div class="icon">😤</div><strong>Mood or confusion changes</strong><span>Feeling unusually irritable, anxious or disoriented in familiar situations.</span></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>7–8h</b><span>Typical sleep target for many adults</span></div>
+      <div class="stat"><b>30m</b><span>Daily movement is a practical baseline</span></div>
+      <div class="stat"><b>1x</b><span>Meaningful social connection each day</span></div>
+      <div class="stat"><b>Daily</b><span>Hydration and balanced meals matter</span></div>
+    </div>
+
+    <h3>Six things you can build into your routine</h3>
+    <div class="steps">
+      <div class="step"><div><h4>Protect your sleep</h4><p>A consistent sleep schedule supports attention, energy and overall health.</p></div></div>
+      <div class="step"><div><h4>Move every day</h4><p>Walking and other forms of regular physical activity support cardiovascular health.</p></div></div>
+      <div class="step"><div><h4>Keep learning</h4><p>Reading, languages, music, puzzles and hobbies can keep your mind engaged.</p></div></div>
+      <div class="step"><div><h4>Stay connected</h4><p>Regular contact with friends, family and community can support emotional wellbeing.</p></div></div>
+      <div class="step"><div><h4>Manage stress</h4><p>Simple routines such as breathing, walking and time outdoors can help reduce daily stress.</p></div></div>
+      <div class="step"><div><h4>Stay hydrated</h4><p>Even mild dehydration can affect how alert and focused you feel.</p></div></div>
+    </div>
+
+    <h2>What to eat more often — and what to limit.</h2>
+    <div class="food-grid">
+      <div class="food-card">
+        <h4>✅ Consider more often</h4>
+        <ul>
+          <li>Fish and other omega-3 sources</li>
+          <li>Berries and colorful fruit</li>
+          <li>Leafy green vegetables</li>
+          <li>Nuts and seeds</li>
+          <li>Extra-virgin olive oil</li>
+          <li>Eggs and other protein sources</li>
+          <li>Legumes and whole grains</li>
+        </ul>
+      </div>
+      <div class="food-card bad">
+        <h4>⛔ Consider limiting</h4>
+        <ul>
+          <li>Sugary drinks</li>
+          <li>Deep-fried foods</li>
+          <li>Highly processed meats</li>
+          <li>Excess refined sugar</li>
+          <li>Highly refined carbohydrates</li>
+          <li>Excess alcohol</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="recipe">
+      <div class="recipe-label">Daily Recipe</div>
+      <h2 style="margin-top:8px">Simple Morning Bowl</h2>
+      <p>A quick breakfast built around whole foods, healthy fats, protein and fruit.</p>
+      <h4>Ingredients</h4>
+      <ul>
+        <li>½ avocado</li>
+        <li>2 eggs</li>
+        <li>A small handful of nuts</li>
+        <li>Fresh berries or orange slices</li>
+        <li>1 tbsp extra-virgin olive oil</li>
+        <li>A pinch of turmeric and black pepper, if desired</li>
+      </ul>
+      <h4>How to prepare</h4>
+      <ol>
+        <li>Cook the eggs to your preferred doneness.</li>
+        <li>Slice the avocado and fruit.</li>
+        <li>Arrange everything in a bowl.</li>
+        <li>Add nuts and olive oil, then serve immediately.</li>
+      </ol>
+    </div>
+
+    <h3>Natural compounds commonly discussed in nutrition research</h3>
+    <div class="compound-grid">
+      <div class="compound"><span class="emoji">🌿</span><b>Ginkgo</b><small>Often studied in relation to circulation and cognition.</small></div>
+      <div class="compound"><span class="emoji">🍃</span><b>Bacopa</b><small>A botanical commonly studied in traditional-use contexts.</small></div>
+      <div class="compound"><span class="emoji">🫚</span><b>Ginseng</b><small>Frequently researched for fatigue and mental performance.</small></div>
+      <div class="compound"><span class="emoji">🌾</span><b>Ashwagandha</b><small>Often studied in connection with stress response.</small></div>
+      <div class="compound"><span class="emoji">🍵</span><b>Curcumin</b><small>A plant compound studied for antioxidant activity.</small></div>
+      <div class="compound"><span class="emoji">🍇</span><b>Resveratrol</b><small>A polyphenol found in grapes and other foods.</small></div>
+      <div class="compound"><span class="emoji">🍄</span><b>Lion's Mane</b><small>A mushroom used in food and studied in early research.</small></div>
+      <div class="compound"><span class="emoji">🫐</span><b>Anthocyanins</b><small>Plant pigments found in berries and colorful produce.</small></div>
+    </div>
+
+    <div class="cta-box">
+      <h3>Mind Wake</h3>
+      <p>No destination is configured in this version. The Mind Wake call-to-action is visual only and contains no affiliate link.</p>
+      <button class="fake-btn" type="button">Learn More About Mind Wake</button>
+    </div>
+
+    <h3>References / information sources</h3>
+    <div class="refs">
+      <ol>
+        <li>Public-health guidance on healthy aging and cognitive wellbeing.</li>
+        <li>Peer-reviewed nutrition and lifestyle research.</li>
+        <li>General educational information only; not medical advice.</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Important disclosure:</strong> This page is for educational and illustrative purposes only and does not diagnose, treat, cure or prevent any disease. Individual experiences vary. Consult a qualified healthcare professional regarding persistent memory changes, medications, supplements, pregnancy, nursing or medical conditions.
+      <br><br><span class="no-link-note">This build contains no affiliate URLs, no external destination links, no tracking pixels and no analytics scripts.</span>
+    </div>
+  </article>
+
+  <footer>
+    Mind Wake · Personal story / editorial-style page.<br>
+    This site is not affiliated with NewsBreak, Taboola, Meta, Google or any other advertising platform.
+  </footer>
+</main>
+</body>
+</html>
