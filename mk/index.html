@@ -1360,6 +1360,11 @@
 </script>
 <!-- End NB Pixel Snippet -->
 
+<!-- NEWSBREAK VIEW CONTENT -->
+<script>
+  nbpix('event', 'view_content');
+</script>
+
 </head>
 
 <body>
@@ -1453,7 +1458,7 @@
                       <li><span class="no">×</span>No Free Shipping</li>
                     </ul>
                     <div class="mw2-today"><s>$358</s><strong>$178</strong><small>today</small></div>
-                    <a class="mw2-buy buylink smartplayer-click-event" href="https://buygoods.com/secure/checkout.html?aff_id=6922&account_id=12591&product_codename=min2n&redirect=aHR0cHM6Ly9iZy5taW5kd2FrZS5zdG9yZS9mYi1mZTEyMy1tdzEyLw%3D%3D" aria-label="Buy MindWake 2 Bottles">
+                    <a class="mw2-buy buylink smartplayer-click-event" href="https://mind-wake.mycartpanda.com/checkout/211398748:1?afid=ZhQ1Nk4P05" aria-label="Buy MindWake 2 Bottles">
                       <span>BUY NOW</span>
                       <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
                     </a>
@@ -1478,7 +1483,7 @@
                       <li><span class="ok">✓</span>60 DAYS GUARANTEE</li>
                     </ul>
                     <div class="mw2-today"><s>$1,074</s><strong>$294</strong><small>today</small></div>
-                    <a class="mw2-buy buylink smartplayer-click-event" href="https://buygoods.com/secure/checkout.html?aff_id=6922&account_id=12591&product_codename=min6b&redirect=aHR0cHM6Ly9iZy5taW5kd2FrZS5zdG9yZS9mYS1mZTYtbXcxMi8%3D" aria-label="Buy MindWake 6 Bottles">
+                    <a class="mw2-buy buylink smartplayer-click-event" href="https://mind-wake.mycartpanda.com/checkout/211398750:1?afid=ZhQ1Nk4P05" aria-label="Buy MindWake 6 Bottles">
                       <span>BUY NOW</span>
                       <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
                     </a>
@@ -1503,7 +1508,7 @@
                       <li><span class="ok">✓</span>Fast &amp; Free Shipping</li>
                     </ul>
                     <div class="mw2-today"><s>$537</s><strong>$216</strong><small>today</small></div>
-                    <a class="mw2-buy buylink smartplayer-click-event" href="https://buygoods.com/secure/checkout.html?aff_id=6922&account_id=12591&product_codename=min3b&redirect=aHR0cHM6Ly9iZy5taW5kd2FrZS5zdG9yZS9mYi1mZTEyMy1tdzEyLw%3D%3D" aria-label="Buy MindWake 3 Bottles">
+                    <a class="mw2-buy buylink smartplayer-click-event" href="https://mind-wake.mycartpanda.com/checkout/211398749:1?afid=ZhQ1Nk4P05" aria-label="Buy MindWake 3 Bottles">
                       <span>BUY NOW</span>
                       <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
                     </a>
@@ -1678,136 +1683,47 @@
 
 
 
-\n  <!-- BUYGOODS TRACKING - MINDWAKE -->
+
+<!--
+    CLEANUP/AUDIT:
+    - UTMfy pixel added: 6a7b14fa19b4751e642eea65.
+    - NewsBreak base pixel active: ID-2095971717105889282.
+    - NewsBreak view_content event active on page load.
+    - No legacy js/track.js is referenced.
+    - Buy buttons carry smartplayer-click-event for VTurb click analytics.
+    - Buy buttons now use CartPanda affiliate checkout URLs and preserve incoming query parameters (including cid).
+  -->
+
+  <!-- CARTPANDA: preserve NewsBreak CID + UTMs/query parameters on checkout links -->
   <script>
   (function () {
     "use strict";
 
-    var ACCOUNT_ID = "12591";
-    var AFFILIATE_ID = "6922";
-    var PRODUCTS = "min2n,min3b,min6b";
-
-    /*
-      Conversion token intentionally left blank until the official
-      MindWake/BuyGoods conversion token is confirmed. The normal
-      BuyGoods click/session tracking below remains active.
-    */
-    var CONVERSION_TOKEN = "";
-
     var sourceParams = new URLSearchParams(window.location.search);
-    var conversionInserted = false;
 
-    function readCookie(name) {
-      var prefix = name + "=";
-      var parts = document.cookie.split(/;\\s*/);
-      for (var i = 0; i < parts.length; i += 1) {
-        if (parts[i].indexOf(prefix) === 0) {
-          return parts[i].substring(prefix.length);
-        }
-      }
-      return "";
-    }
-
-    function getSourceValue(primary, fallback) {
-      return sourceParams.get(primary) || (fallback ? sourceParams.get(fallback) : "") || "";
-    }
-
-    function normalizeCheckoutLinks() {
-      var sid = getSourceValue("subid", "sid");
-      var sid2 = getSourceValue("subid2", "sid2");
-
-      document.querySelectorAll('a[href*="buygoods.com/secure/checkout.html"]').forEach(function (link) {
+    function preserveTrackingParams() {
+      document.querySelectorAll('a[href*="mind-wake.mycartpanda.com/checkout/"]').forEach(function (link) {
         try {
           var checkout = new URL(link.href, window.location.href);
-          if (checkout.hostname !== "buygoods.com" || checkout.pathname !== "/secure/checkout.html") return;
-          if (checkout.searchParams.get("account_id") !== ACCOUNT_ID) return;
 
-          checkout.searchParams.delete("aff_id");
-          checkout.searchParams.set("aff_id", AFFILIATE_ID);
-          if (sid) checkout.searchParams.set("sid", sid);
-          if (sid2) checkout.searchParams.set("sid2", sid2);
+          sourceParams.forEach(function (value, key) {
+            if (!checkout.searchParams.has(key)) {
+              checkout.searchParams.set(key, value);
+            }
+          });
+
           link.href = checkout.toString();
         } catch (error) {
-          /* Keep the original checkout link if parsing fails. */
+          /* Keep the original checkout URL if parsing fails. */
         }
       });
     }
 
-    function getSessionId() {
-      var cookieSession = readCookie("sessid2");
-      if (cookieSession) return cookieSession;
-
-      var checkoutLink = document.querySelector('a[href*="buygoods.com/secure/checkout.html"]');
-      if (!checkoutLink) return "";
-      try {
-        return new URL(checkoutLink.href, window.location.href).searchParams.get("sessid2") || "";
-      } catch (error) {
-        return "";
-      }
-    }
-
-    function insertConversionIframe() {
-      if (conversionInserted || !CONVERSION_TOKEN) return;
-      var sessionId = getSessionId();
-      if (!sessionId) return;
-
-      var iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src =
-        "https://buygoods.com/affiliates/go/conversion/iframe/bg?a=" + encodeURIComponent(ACCOUNT_ID) +
-        "&t=" + encodeURIComponent(CONVERSION_TOKEN) +
-        "&s=" + encodeURIComponent(sessionId);
-      document.body.appendChild(iframe);
-      conversionInserted = true;
-    }
-
-    var callerUrl = new URL(window.location.href);
-    callerUrl.searchParams.set("aff_id", AFFILIATE_ID);
-
-    var trackingSource =
-      "https://tracking.buygoods.com/track/?a=" + encodeURIComponent(ACCOUNT_ID) +
-      "&firstcookie=0" +
-      "&tracking_redirect=" +
-      "&referrer=" + encodeURIComponent(document.referrer) +
-      "&sessid2=" + encodeURIComponent(readCookie("sessid2")) +
-      "&product=" + encodeURIComponent(PRODUCTS) +
-      "&vid1=&vid2=&vid3=" +
-      "&caller_url=" + encodeURIComponent(callerUrl.toString());
-
-    if (typeof window.add_to_cart !== "undefined") {
-      trackingSource += "&add_to_cart=" + encodeURIComponent(window.add_to_cart);
-    }
-
-    var trackingScript = document.createElement("script");
-    trackingScript.type = "text/javascript";
-    trackingScript.defer = true;
-    trackingScript.src = trackingSource;
-    trackingScript.onload = function () {
-      normalizeCheckoutLinks();
-      insertConversionIframe();
-    };
-    trackingScript.onerror = normalizeCheckoutLinks;
-    document.head.appendChild(trackingScript);
-
-    normalizeCheckoutLinks();
-    window.addEventListener("load", normalizeCheckoutLinks);
-    document.addEventListener("pointerdown", normalizeCheckoutLinks, true);
-    document.addEventListener("click", normalizeCheckoutLinks, true);
-
-    window.setTimeout(function () {
-      normalizeCheckoutLinks();
-      insertConversionIframe();
-    }, 3000);
+    preserveTrackingParams();
+    window.addEventListener("load", preserveTrackingParams);
+    document.addEventListener("pointerdown", preserveTrackingParams, true);
+    document.addEventListener("click", preserveTrackingParams, true);
   })();
   </script>
 
-  <!--
-    CLEANUP/AUDIT:
-    - UTMfy pixel added: 6a7b14fa19b4751e642eea65.
-    - NewsBreak base pixel added: ID-2095971717105889282.
-    - No legacy js/track.js is referenced.
-    - BuyGoods tracking is configured for account 12591 / affiliate 6922 / min2n,min3b,min6b.
-    - Conversion iframe remains disabled until the official MindWake conversion token is confirmed.
-    - Buy buttons carry smartplayer-click-event for VTurb click analytics.
-  -->
 </body></html>
